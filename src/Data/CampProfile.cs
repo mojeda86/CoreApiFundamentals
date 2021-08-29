@@ -19,7 +19,8 @@ namespace CoreCodeCamp.Data
                 .ForMember(c => c.CityTown, o => o.MapFrom(c => c.Location.CityTown))
                 .ForMember(c => c.StateProvince, o => o.MapFrom(c => c.Location.StateProvince))
                 .ForMember(c => c.PostalCode, o => o.MapFrom(c => c.Location.PostalCode))
-                .ForMember(c => c.Country, o => o.MapFrom(c => c.Location.Country));
+                .ForMember(c => c.Country, o => o.MapFrom(c => c.Location.Country))
+                .ReverseMap();
 
             this.CreateMap<Talk, TalkModel>();
             this.CreateMap<Speaker, SpeakerModel>();
