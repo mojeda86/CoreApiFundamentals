@@ -11,18 +11,16 @@ using System.Threading.Tasks;
 
 namespace CoreCodeCamp.Controllers
 {
-    [Route("api/[controller]")]
-    //[Route("api/v{version:apiVersion}/[controller]")] //this is for versioning with URL and we should use "option.ApiVersionReader = UrlSegmentApiVersionReader()" in Startup.cs
-    [ApiVersion("1.0")]
-    [ApiVersion("1.1")]
+    [Route("api/camps")]
+    [ApiVersion("2.0")]
     [ApiController]
-    public class CampsController : ControllerBase
+    public class Camps2Controller : ControllerBase
     {
         private readonly ICampRepository campRepository;
         private readonly IMapper mapper;
         private readonly LinkGenerator linkGenerator;
 
-        public CampsController(ICampRepository campRepository, IMapper mapper, LinkGenerator linkGenerator)
+        public Camps2Controller(ICampRepository campRepository, IMapper mapper, LinkGenerator linkGenerator)
         {
             this.campRepository = campRepository;
             this.mapper = mapper;
@@ -30,7 +28,6 @@ namespace CoreCodeCamp.Controllers
         }
 
         [HttpGet]
-        [MapToApiVersion("1.0")]
         public async Task<ActionResult<List<CampModel>>> Get(bool includeTalks = false)
         {
             try
@@ -46,7 +43,6 @@ namespace CoreCodeCamp.Controllers
         }
 
         [HttpGet]
-        [MapToApiVersion("1.1")]
         public async Task<ActionResult<List<CampModel>>> Get11(bool includeTalks = true)
         {
             try

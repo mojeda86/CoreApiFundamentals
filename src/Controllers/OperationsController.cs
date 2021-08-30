@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 namespace CoreCodeCamp.Controllers
 {
     [Route("api/[controller]")]
+    //[Route("api/v{version:apiVersion}/[controller]")] //this is for versioning with URL and we should use "option.ApiVersionReader = UrlSegmentApiVersionReader()" in Startup.cs
     [ApiController]
     public class OperationsController : ControllerBase
     {
